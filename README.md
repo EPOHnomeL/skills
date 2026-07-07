@@ -20,6 +20,17 @@ skills that also live in `user/` are not re-vendored here — deploy `user/` fir
 The `ponytail*` skills are excluded: they come from the [ponytail](https://github.com/DietrichGebert/ponytail)
 plugin and are re-installable.
 
+## Working on the skills here
+
+This repo carries `writing-great-skills` as its **own** project skill at
+[`.claude/skills/writing-great-skills/`](.claude/skills/writing-great-skills/), so `/writing-great-skills`
+is available the moment you open Claude Code in this repo — run it on the skills under `user/`,
+`vault/`, and `fs2/` to tighten them.
+
+> The canonical, editable copy is [`user/writing-great-skills/`](user/writing-great-skills/) (it
+> deploys to `~/.claude/skills`). The `.claude/skills/` copy is an in-repo mirror for tooling only —
+> after sharpening, re-sync it from `user/` so the two don't drift.
+
 ## Provenance
 
 Some skills under `user/` are vendored third-party, not authored by me. See
