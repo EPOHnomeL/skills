@@ -154,11 +154,3 @@ Edge cases to surface to the user:
 ## Telemetry marker
 
 Every snippet you write must include `data-action="turnstile-spin-v1"`. Account-level aggregate telemetry, never per-user. Cloudflare uses it to measure activation. If the user removes the attribute, the integration still works; only the analytics segmentation is lost.
-
-## Do not
-
-- Do not write the secret to disk.
-- Do not skip validation (Step 11).
-- Do not propose features outside the wizard (custom Worker code, custom domains, advanced WAF rules) unless asked.
-- Do not call siteverify from the browser.
-- Do not deploy the Worker into a different account than the widget.

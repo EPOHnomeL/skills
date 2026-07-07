@@ -460,7 +460,8 @@ If a teammate landed on the page cold, would the interaction make them say _"oh 
 
 ## Quality bar
 
-- **No interaction is decoration.** Every widget must teach something the reader couldn't get faster from a paragraph. If a widget just animates without revealing anything, cut it.
+(Interaction teaching-value is governed above by the Interaction quality bar — these are the remaining ship gates.)
+
 - **Use real symbols, not placeholders.** Diagram nodes are real function/procedure/file names from the codebase. The minimal runnable example reproduces real logic (rewritten in pure browser JS — drop the Prisma/IREC/chain calls and replace with hard-coded inputs).
 - **Bugs get reproducers.** If the subject is a bug or has known foot-guns (the CLAUDE.md "Gotchas"), the Pitfalls section MUST contain at least one Before/After live reproducer where the reader presses a button and sees the wrong behaviour, then sees it fixed.
 - **Load-bearing clusters get a warning banner.** If the subject touches Auth, DB, IREC Issuance, On-chain, API layer, Validators, Notifications, or Inngest (see CLAUDE.md "Cluster map"), put a red-bordered callout at the top of the page that names the cluster and links the blast-radius warning text.
