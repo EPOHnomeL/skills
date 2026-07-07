@@ -1,0 +1,8 @@
+{
+  "name": "acme-orders-fixture",
+  "private": true,
+  "scripts": {
+    "documentation": "node tooling/docs-meta.mjs && npx --yes serve@latest --listen tcp://127.0.0.1:3000 .",
+    "documentation:meta": "node tooling/docs-meta.mjs"
+  }
+}
