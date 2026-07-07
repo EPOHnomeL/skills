@@ -38,7 +38,7 @@ Completion criterion: the ticket ends at **`In Review` with a PR, both reviews r
 5. **Implement.** Follow the bug flow — `/diagnosing-bugs` if the cause isn't obvious, `/ponytail` for the change itself. Match scope: a bug fix is a bug fix; don't bundle a refactor. Run the relevant tests (`/test`).
 6. **PR → `dev`.** Open via `gh` (interactive) or the GitHub MCP (headless). Body: `Closes <KEY>` on its own line, a Summary, what changed & why, files touched, risks/assumptions, a Test plan, and the two review placeholders per [workflows.md § Post-PR reviews](../../../docs/agents/workflows.md#post-pr-reviews). Never target `master`.
 7. **Reviews.** Run `thermo-nuclear-code-quality-review` and `/security-review`; splice each one's full output into its PR placeholder. `/do` is where the existing post-PR mandate actually gets executed.
-8. **Testing Methodology.** Author a concise, numbered "do X → expect Y" methodology a second senior can follow _without reading the diff_, and post it into the Jira ticket. To the point — it's a test script, not an essay.
+8. **Testing Methodology.** Run [`/test-plan`](../test-plan/SKILL.md) for `<KEY>` and post its output into the Jira ticket — a manual staging methodology a second senior can follow _without reading the diff_.
 9. **Advance.** Transition `In Progress → In Review` and comment on the ticket linking the PR. **Stop — this is the ceiling.**
 
 ## 2. In Review → local branch moves (within the ceiling)
