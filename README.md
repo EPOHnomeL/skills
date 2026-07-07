@@ -60,6 +60,11 @@ installed with `npx skills list` and `npx skills remove <name>`.
 - `html-demo-wizard` — high-fidelity standalone HTML product demos and flow simulations.
 - `thermo-nuclear-code-quality-review` — extremely strict maintainability review.
 
+**hindi-learning project skills** (the learning-course platform — Topics, Editions, the Hub, cloud Routines)
+- `grill-my-knowledge` — examiner that grills me to the edge of a domain and hands the gap list to `teach`.
+- `teach` — author interactive HTML lessons for a Topic in a teaching workspace (missions, references, learning records).
+- `translate` — the translate Routine: render a completed course into one target-language Edition and publish it back to the Hub.
+
 **Admin**
 - `fs-board` — build a PR board into the Obsidian vault.
 - `prune-skills` — audit global skills' per-turn context load and prune the unused.
