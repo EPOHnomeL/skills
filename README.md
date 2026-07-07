@@ -1,66 +1,95 @@
-# claude-skills
+# skills
 
-Personal dotfiles-style repo for my custom [Claude Code](https://claude.com/claude-code) skills —
-one version-controlled source of truth for skills that otherwise scatter across every project's
-`.claude/skills/` directory.
+My personal [Claude Code](https://claude.com/claude-code) skills — one version-controlled source
+of truth, installable into any agent with [`npx skills`](https://github.com/vercel-labs/skills).
 
-## Layout — organized by deploy target
+Everything lives flat under [`skills/`](skills/), one directory per skill, so the whole set is
+discoverable by the `skills` CLI. Grouping below is for reading only — on disk it's a flat catalog.
 
-Claude Code only loads skills from a `.claude/skills/` directory (global or per-project). Each top
-folder here **maps to one of those load paths**, so deploying is a straight symlink/copy per folder.
+## Install
 
-| Folder | Deploys to | What's in it |
-|---|---|---|
-| `user/` | `~/.claude/skills/` | My everyday global set — loads in every project (36 skills). |
-| `vault/` | `…/Obsidian Vault/Work/.claude/skills/` | Vault-scoped admin tools: `fs-board`, `prune-skills`. |
-| `fs2/` | `C:/Code/Yknot/fs2/.claude/skills/` | fs2-only project skills (12) — `worklist`, `pull`, `push`, `do`, `qa`, `test`, `incident`, `doc-sync`, `explain-as-html`, `html-demo-wizard`, `resolving-merge-conflicts`, `thermo-nuclear-code-quality-review`. |
+```sh
+# Browse and pick interactively (choose skills + which agents to install into)
+npx skills add epohnomel/skills
 
-**DRY, not a full mirror.** `fs2/` holds only skills *unique* to fs2. The Matt Pocock set and other
-skills that also live in `user/` are not re-vendored here — deploy `user/` first, then `fs2/` on top.
-The `ponytail*` skills are excluded: they come from the [ponytail](https://github.com/DietrichGebert/ponytail)
-plugin and are re-installable.
+# See everything on offer without installing
+npx skills add epohnomel/skills --list
 
-## Working on the skills here
+# Grab specific skills
+npx skills add epohnomel/skills --skill design --skill graphify
 
-This repo carries `writing-great-skills` as its **own** project skill at
-[`.claude/skills/writing-great-skills/`](.claude/skills/writing-great-skills/), so `/writing-great-skills`
-is available the moment you open Claude Code in this repo — run it on the skills under `user/`,
-`vault/`, and `fs2/` to tighten them.
+# Install one skill globally into Claude Code, no prompts
+npx skills add epohnomel/skills --skill worklist -g -a claude-code -y
 
-> The canonical, editable copy is [`user/writing-great-skills/`](user/writing-great-skills/) (it
-> deploys to `~/.claude/skills`). The `.claude/skills/` copy is an in-repo mirror for tooling only —
-> after sharpening, re-sync it from `user/` so the two don't drift.
+# Everything, everywhere (no prompts)
+npx skills add epohnomel/skills --all
+```
+
+`npx skills` uses GitHub as its registry — `epohnomel/skills` resolves to this repo. Manage what's
+installed with `npx skills list` and `npx skills remove <name>`.
+
+## What's inside
+
+**Docs & knowledge**
+- `learn` — manage project learnings.
+- `graphify` — turn any input (code, docs, papers, images, video) into a knowledge graph.
+- `scaffold-knowledge-bank` — stand up a `docs/architecture` knowledge bank (SPA + glossary + conventions) in a repo.
+- `populate-knowledge-bank` — fill and keep current the knowledge bank that scaffold stood up.
+
+**Design & front-end**
+- `design` — comprehensive design skill: brand identity, tokens, UI styling, logo generation.
+- `design-system` — three-layer token architecture, component specs, slide generation.
+- `brand` — brand voice, visual identity, messaging frameworks, asset management.
+- `banner-design` — banners for social, ads, web heroes, print.
+- `slides` — strategic HTML presentations with Chart.js, tokens, copywriting formulas.
+- `ui-styling` — accessible UIs with shadcn/ui + Tailwind.
+- `ui-ux-pro-max` — UI/UX design intelligence (styles, palettes, font pairings, stacks).
+- `web-perf` — Core Web Vitals audit via Chrome DevTools MCP.
+
+**Integrations**
+- `turnstile-spin` — set up Cloudflare Turnstile end-to-end in a project.
+
+**fs2 project skills** (coupled to the fs2 codebase — Prisma, Jira, `pnpm test:api`, a `dev` branch)
+- `worklist` — pull my Jira work and cross-reference open PRs.
+- `do` — run a single Jira BUG ticket to its next lifecycle step.
+- `pull` / `push` — rebase `dev` / push via the right flow with fs2 rules.
+- `test` / `test-plan` — run the fs2 suite / produce a staging test plan for a ticket or PR.
+- `incident` — blameless prod post-mortem under `docs/incidents/`.
+- `doc-sync` — update docs to match code landed since the last docs commit.
+- `explain-as-html` — self-contained interactive HTML knowledge-transfer doc.
+- `html-demo-wizard` — high-fidelity standalone HTML product demos and flow simulations.
+- `thermo-nuclear-code-quality-review` — extremely strict maintainability review.
+
+**Admin**
+- `fs-board` — build a PR board into the Obsidian vault.
+- `prune-skills` — audit global skills' per-turn context load and prune the unused.
+
+## Companion skills
+
+A few of these orchestrate skills that don't live here (I keep only my own work in this repo).
+Install the companions separately if you use the skills that call them:
+
+- **[mattpocock/skills](https://github.com/mattpocock/skills)** — `incident` and the
+  `*-knowledge-bank` skills delegate to Matt Pocock's engineering primitives (`grill-with-docs`,
+  `domain-modeling`, `setup-matt-pocock-skills`). Install: `npx skills add mattpocock/skills`.
+- **gstack** — `learn` runs against a `gstack` install (`~/.claude/skills/gstack/`).
+- **claudekit design helpers** — `banner-design` calls sibling `ai-artist`, `ai-multimodal`, and
+  `chrome-devtools` skills for image generation and screenshots.
 
 ## Provenance
 
-Some skills under `user/` are vendored third-party, not authored by me. See
-[`PROVENANCE-matt-pocock.md`](PROVENANCE-matt-pocock.md) — the Matt Pocock engineering/productivity
-set ([mattpocock/skills](https://github.com/mattpocock/skills), MIT), with a refresh recipe and
-pinned commit.
+Not everything here is authored by me. The design set (`design`, `design-system`, `brand`,
+`banner-design`, `slides`, `ui-styling`) is vendored from **claudekit** (MIT); `graphify` and
+`ui-ux-pro-max` are third-party skills I've adopted. They're kept because I intend to sharpen them
+with `/writing-great-skills` — treat their upstreams as canonical until then.
 
-## Deploy
+## Working on the skills
 
-These are the source of truth; the live `.claude/skills/` dirs are wired from here. On Windows,
-symlinks need Developer Mode or an elevated shell (`New-Item -ItemType SymbolicLink`).
+This repo carries `writing-great-skills` as its **own** project skill at
+[`.claude/skills/writing-great-skills/`](.claude/skills/writing-great-skills/), so
+`/writing-great-skills` is available the moment you open Claude Code here — run it on anything under
+[`skills/`](skills/) to tighten it.
 
-**Symlink a whole set (edits stay live, dotfiles-style):**
-
-```powershell
-# global set
-New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.claude\skills" -Target "C:\Code\claude-skills\user"
-```
-
-**Or symlink individual skills** (when the target dir must also hold other, non-repo skills):
-
-```powershell
-$repo = "C:\Code\claude-skills"
-Get-ChildItem "$repo\fs2" -Directory | ForEach-Object {
-  New-Item -ItemType SymbolicLink -Path "C:\Code\Yknot\fs2\.claude\skills\$($_.Name)" -Target $_.FullName
-}
-```
-
-**Or just copy** (a snapshot, will drift):
-
-```powershell
-Copy-Item "C:\Code\claude-skills\user\*" "$env:USERPROFILE\.claude\skills\" -Recurse -Force
-```
+> `writing-great-skills` is itself a [Matt Pocock](https://github.com/mattpocock/skills) skill, kept
+> here only as my local authoring tool — **not** shipped in the distributed catalog. It's marked
+> `metadata.internal` so `npx skills` skips it.
