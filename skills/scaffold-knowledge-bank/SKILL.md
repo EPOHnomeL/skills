@@ -66,7 +66,7 @@ If any required skill is missing, **stop and report exactly which one is missing
 replacement.
 
 > Portability note for the maintainer: for true cross-machine/CI use, prefer vendoring the suite
-> into the consuming repo (vendor the suite into the consuming repo — pin copies under `<repo>/.agents/skills/`) rather than
+> into the consuming repo — pin copies under `<repo>/.agents/skills/` — rather than
 > relying on a personal global symlink. v1 orchestrates-by-name for lightness; document this tradeoff
 > wherever the skill is published.
 
