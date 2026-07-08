@@ -4,7 +4,10 @@ My personal [Claude Code](https://claude.com/claude-code) skills — one version
 of truth, installable into any agent with [`npx skills`](https://github.com/vercel-labs/skills).
 
 Everything lives flat under [`skills/`](skills/), one directory per skill, so the whole set is
-discoverable by the `skills` CLI. Grouping below is for reading only — on disk it's a flat catalog.
+discoverable by the `skills` CLI. The groups below are declared in
+[`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json), so `npx skills add` shows them
+as selectable sections (toggle a header to grab the whole group — e.g. both knowledge-bank skills at
+once). On disk it stays a flat catalog; the manifest just maps each skill to a group by path.
 
 ## Install
 

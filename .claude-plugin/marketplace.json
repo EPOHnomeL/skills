@@ -1,0 +1,73 @@
+{
+  "name": "epohnomel-skills",
+  "owner": {
+    "name": "epohnomel"
+  },
+  "plugins": [
+    {
+      "name": "docs-and-knowledge",
+      "source": "./",
+      "skills": [
+        "./skills/learn",
+        "./skills/graphify",
+        "./skills/scaffold-knowledge-bank",
+        "./skills/populate-knowledge-bank"
+      ]
+    },
+    {
+      "name": "design-and-front-end",
+      "source": "./",
+      "skills": [
+        "./skills/design",
+        "./skills/design-system",
+        "./skills/brand",
+        "./skills/banner-design",
+        "./skills/slides",
+        "./skills/ui-styling",
+        "./skills/ui-ux-pro-max",
+        "./skills/web-perf"
+      ]
+    },
+    {
+      "name": "integrations",
+      "source": "./",
+      "skills": [
+        "./skills/turnstile-spin"
+      ]
+    },
+    {
+      "name": "fs2-project",
+      "source": "./",
+      "skills": [
+        "./skills/worklist",
+        "./skills/do",
+        "./skills/pull",
+        "./skills/push",
+        "./skills/test",
+        "./skills/test-plan",
+        "./skills/incident",
+        "./skills/doc-sync",
+        "./skills/explain-as-html",
+        "./skills/html-demo-wizard",
+        "./skills/thermo-nuclear-code-quality-review"
+      ]
+    },
+    {
+      "name": "hindi-learning",
+      "source": "./",
+      "skills": [
+        "./skills/grill-my-knowledge",
+        "./skills/teach",
+        "./skills/translate"
+      ]
+    },
+    {
+      "name": "admin",
+      "source": "./",
+      "skills": [
+        "./skills/fs-board",
+        "./skills/prune-skills"
+      ]
+    }
+  ]
+}
